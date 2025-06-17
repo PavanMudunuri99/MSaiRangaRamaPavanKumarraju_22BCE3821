@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hospitaldb
+
+  security:
+    user:
+      name: admin
+      password: admin123
+
+logging:
+  level:
+    org.springframework: INFO
+
+hospital:
+  app:
+    jwtSecret: yourJWTSecretKeyWithAtLeast64CharactersForSecurity1234567890abcdefghijklmnopqrstuvwxyz
+    jwtExpirationMs: 86400000  # 24 hours in milliseconds

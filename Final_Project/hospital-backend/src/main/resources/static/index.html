@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital Management Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      background-color: #f0f0f0;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    .section {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-top: 5px;
+      background-color: #fafafa;
+    }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 220px;
+    }
+
+    button {
+      margin: 5px 5px 5px 0;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .info {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 10px;
+      background: #eef;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🏥 Hospital Management System</h1>
+
+  <!-- Doctor Section -->
+  <h2 onclick="toggleSection('doctorSection')">👨‍⚕️ Doctor Management</h2>
+  <div class="section" id="doctorSection">
+    <div class="form-group">
+      <label>Name:</label><input type="text" id="doctorName" placeholder="e.g. Dr. Ram"><br>
+      <label>Specialization:</label><input type="text" id="doctorSpec" placeholder="e.g. Cardiologist"><br>
+      <label>Email:</label><input type="email" id="doctorEmail" placeholder="e.g. doctor@example.com"><br>
+      <label>Phone:</label><input type="text" id="doctorPhone" placeholder="e.g. 9876543210"><br>
+    </div>
+    <button onclick="addDoctor()">Add</button>
+    <button onclick="getDoctor()">Get</button>
+    <button onclick="updateDoctor()">Update</button>
+    <button onclick="deleteDoctor()">Delete</button>
+    <div class="info">ℹ️ GET, PUT, DELETE operations for doctors are done using the <b>email</b>.</div>
+  </div>
+
+  <!-- Patient Section -->
+  <h2 onclick="toggleSection('patientSection')">🧑‍⚕️ Patient Management</h2>
+  <div class="section" id="patientSection">
+    <div class="form-group">
+      <label>Name:</label><input type="text" id="patientName" placeholder="e.g. Ravi Kumar"><br>
+      <label>Age:</label><input type="number" id="patientAge" placeholder="e.g. 30"><br>
+      <label>Gender:</label><input type="text" id="patientGender" placeholder="e.g. Male"><br>
+      <label>Disease:</label><input type="text" id="patientDisease" placeholder="e.g. Flu"><br>
+    </div>
+    <button onclick="addPatient()">Add</button>
+    <button onclick="getPatient()">Get</button>
+    <button onclick="updatePatient()">Update</button>
+    <button onclick="deletePatient()">Delete</button>
+    <div class="info">ℹ️ GET, PUT, DELETE operations for patients are done using the <b>name</b>.</div>
+  </div>
+
+  <!-- User Section -->
+  <h2 onclick="toggleSection('userSection')">👤 User Management</h2>
+  <div class="section" id="userSection">
+    <div class="form-group">
+      <label>Username:</label><input type="text" id="userName" placeholder="e.g. admin123"><br>
+      <label>Password:</label><input type="password" id="userPassword" placeholder="••••••"><br>
+      <label>Email:</label><input type="email" id="userEmail" placeholder="e.g. admin@hospital.com"><br>
+      <label>Role:</label>
+      <select id="userRole">
+        <option value="">--Select Role--</option>
+        <option value="admin">admin</option>
+        <option value="staff">staff</option>
+      </select><br>
+    </div>
+    <button onclick="addUser()">Add</button>
+    <button onclick="getUser()">Get</button>
+    <button onclick="updateUser()">Update</button>
+    <button onclick="deleteUser()">Delete</button>
+    <div class="info">ℹ️ GET, PUT, DELETE operations for users are done using the <b>username</b>. Role must be <b>admin</b> or <b>staff</b>.</div>
+  </div>
+</div>
+
+<script>
+  const api = "http://localhost:8080/api";
+
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    section.style.display = section.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // Doctor CRUD
+  function addDoctor() {
+    fetch(`${api}/doctors`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: doctorName.value,
+        specialization: doctorSpec.value,
+        email: doctorEmail.value,
+        phone: doctorPhone.value
+      })
+    })
+    .then(res => res.ok ? alert("Doctor added successfully") : alert("Failed to add doctor"));
+  }
+
+  function getDoctor() {
+    fetch(`${api}/doctors/email/${doctorEmail.value}`)
+    .then(res => res.ok ? res.json() : Promise.reject())
+    .then(doc => {
+      doctorName.value = doc.name;
+      doctorSpec.value = doc.specialization;
+      doctorPhone.value = doc.phone;
+      alert("Doctor details loaded");
+    })
+    .catch(() => alert("Doctor not found"));
+  }
+
+  function updateDoctor() {
+    fetch(`${api}/doctors/email/${doctorEmail.value}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: doctorName.value,
+        specialization: doctorSpec.value,
+        phone: doctorPhone.value,
+        email: doctorEmail.value
+      })
+    })
+    .then(res => res.ok ? alert("Doctor updated successfully") : alert("Doctor not found"));
+  }
+
+  function deleteDoctor() {
+    fetch(`${api}/doctors/email/${doctorEmail.value}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.ok ? alert("Doctor deleted") : alert("Doctor not found"));
+  }
+
+  // Patient CRUD
+  function addPatient() {
+    fetch(`${api}/patients`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: patientName.value,
+        age: patientAge.value,
+        gender: patientGender.value,
+        disease: patientDisease.value
+      })
+    })
+    .then(res => res.ok ? alert("Patient added") : alert("Patient already exists"));
+  }
+
+  function getPatient() {
+    fetch(`${api}/patients/name/${patientName.value}`)
+    .then(res => res.ok ? res.json() : Promise.reject())
+    .then(p => {
+      patientAge.value = p.age;
+      patientGender.value = p.gender;
+      patientDisease.value = p.disease;
+      alert("Patient details loaded");
+    })
+    .catch(() => alert("Patient not found"));
+  }
+
+  function updatePatient() {
+    fetch(`${api}/patients/name/${patientName.value}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: patientName.value,
+        age: patientAge.value,
+        gender: patientGender.value,
+        disease: patientDisease.value
+      })
+    })
+    .then(res => res.ok ? alert("Patient updated") : alert("Patient not found"));
+  }
+
+  function deletePatient() {
+    fetch(`${api}/patients/name/${patientName.value}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.ok ? alert("Patient deleted") : alert("Patient not found"));
+  }
+
+  // User CRUD
+  function addUser() {
+    fetch(`${api}/users/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: userName.value,
+        password: userPassword.value,
+        email: userEmail.value,
+        role: userRole.value
+      })
+    })
+    .then(res => res.ok ? alert("User registered") : alert("Failed to register user"));
+  }
+
+  function getUser() {
+    fetch(`${api}/users/register/${userName.value}`)
+    .then(res => res.ok ? res.json() : Promise.reject())
+    .then(u => {
+      userEmail.value = u.email;
+      userRole.value = u.role;
+      alert("User details loaded");
+    })
+    .catch(() => alert("User not found"));
+  }
+
+  function updateUser() {
+    fetch(`${api}/users/register/${userName.value}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: userName.value,
+        password: userPassword.value,
+        email: userEmail.value,
+        role: userRole.value
+      })
+    })
+    .then(res => res.ok ? alert("User updated") : alert("User not found"));
+  }
+
+  function deleteUser() {
+    fetch(`${api}/users/register/${userName.value}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.ok ? alert("User deleted") : alert("User not found"));
+  }
+</script>
+</body>
+</html>
