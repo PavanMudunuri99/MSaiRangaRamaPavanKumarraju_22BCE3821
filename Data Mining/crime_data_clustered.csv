@@ -1,0 +1,51 @@
+Date,Crime Type,Latitude,Longitude,Location,Severity,Year,Cluster
+13-08-2023,Robbery,30.066033,-116.768255,Chicago,High,2023,0
+28-09-2024,Vandalism,42.023122,-90.472174,New York,Low,2024,2
+17-07-2023,Theft,39.879382,-95.69311,Los Angeles,Low,2023,2
+21-12-2023,Robbery,34.820608,-69.770912,Houston,Medium,2023,1
+20-11-2023,Assault,25.534289,-73.448336,San Antonio,Medium,2023,1
+21-10-2024,Vandalism,31.544999,-83.686947,New York,Low,2024,1
+25-10-2024,Theft,40.269671,-105.673838,Los Angeles,Low,2024,2
+23-08-2023,Fraud,46.802932,-103.274645,Houston,Medium,2023,2
+31-12-2023,Theft,37.936441,-89.713542,Philadelphia,Medium,2023,2
+11-05-2024,Assault,29.754153,-111.022133,Phoenix,Medium,2024,0
+11-07-2024,Theft,44.70987,-118.070496,Chicago,Medium,2024,0
+14-09-2023,Vandalism,26.95319,-75.930653,San Antonio,High,2023,1
+12-04-2023,Robbery,29.974664,-105.631908,Phoenix,High,2023,0
+19-10-2023,Burglary,48.856863,-101.32179,Philadelphia,Medium,2023,2
+25-03-2024,Drug Possession,25.329436,-91.683752,New York,Medium,2024,2
+14-09-2023,Drug Possession,44.910696,-80.739447,Chicago,Medium,2023,1
+02-01-2024,Drug Possession,44.715448,-87.396745,Philadelphia,Low,2024,2
+17-06-2023,Vandalism,45.13154,-112.229205,Houston,Medium,2023,0
+20-07-2023,Drug Possession,48.941102,-123.858709,San Antonio,Low,2023,0
+27-09-2023,Fraud,30.32546,-94.83669,New York,High,2023,2
+25-01-2024,Vandalism,42.762705,-122.97778,Chicago,Medium,2024,0
+12-03-2024,Theft,43.825189,-79.326572,Chicago,High,2024,1
+26-03-2024,Theft,30.169712,-99.363101,Houston,Medium,2024,2
+18-04-2023,Assault,35.723135,-124.289132,Philadelphia,Low,2023,0
+12-05-2024,Burglary,28.549074,-82.885341,San Antonio,Low,2024,1
+28-02-2025,Assault,33.563773,-90.649577,Phoenix,High,2025,2
+20-09-2024,Theft,25.266358,-110.219136,San Antonio,High,2024,0
+26-02-2024,Drug Possession,48.414999,-103.967655,Los Angeles,Low,2024,2
+14-07-2023,Robbery,32.176175,-91.612749,New York,High,2023,2
+28-06-2023,Drug Possession,28.00404,-117.743919,Phoenix,Medium,2023,0
+07-11-2023,Robbery,28.467257,-75.154047,Philadelphia,High,2023,1
+02-10-2023,Assault,31.062017,-123.262808,Los Angeles,Low,2023,0
+28-05-2024,Theft,39.959678,-96.275833,Los Angeles,High,2024,2
+17-10-2023,Drug Possession,36.940196,-66.740335,Los Angeles,Low,2023,1
+23-09-2023,Fraud,39.75175,-74.324293,New York,High,2023,1
+09-03-2024,Assault,41.700534,-104.708647,San Antonio,Medium,2024,2
+05-08-2024,Theft,42.378567,-106.353881,Los Angeles,Medium,2024,2
+17-07-2023,Theft,31.601779,-107.637326,Phoenix,Medium,2023,0
+09-03-2025,Theft,25.457514,-112.354929,Chicago,Medium,2025,0
+13-05-2024,Theft,31.246023,-91.786322,New York,High,2024,2
+03-12-2024,Robbery,44.014738,-119.968122,Phoenix,Medium,2024,0
+05-05-2023,Robbery,35.327689,-98.395136,San Antonio,Medium,2023,2
+22-08-2023,Robbery,48.864313,-118.13451,New York,Low,2023,0
+16-01-2024,Drug Possession,38.48278,-91.463253,San Antonio,Medium,2024,2
+06-01-2025,Theft,48.042799,-88.108259,Los Angeles,Low,2025,2
+25-12-2023,Theft,41.91167,-67.392417,New York,Low,2023,1
+27-09-2024,Vandalism,37.205001,-113.589827,New York,Medium,2024,0
+26-08-2023,Vandalism,42.234601,-91.66182,Philadelphia,Low,2023,2
+04-06-2023,Burglary,33.653516,-116.678768,Los Angeles,High,2023,0
+19-12-2023,Vandalism,41.552523,-98.182126,New York,Medium,2023,2
